@@ -5,7 +5,7 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../../config';
-
+//const ogUrl = `https://ogcdn.net/e4b8c678-7bd5-445d-ba03-bfaad510c686/v4/${site_text}/${title_text}/${image_url}/og.png`;
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, {
@@ -42,20 +42,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `State: ${state?.page || 0}`,
+          label: 'Check expiration',
+          action: 'post',
         },
         {
+          label: 'success',
           action: 'link',
-          label: 'OnchainKit',
-          target: 'https://onchainkit.xyz',
-        },
-        {
-          action: 'post_redirect',
-          label: 'Dog pictures',
+          target: 'https://basenames-expiration.vercel.app/',
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
+        aspectRatio: '1:1',
+      },
+      input: {
+        text: 'Basename or TokenId',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
       state: {
