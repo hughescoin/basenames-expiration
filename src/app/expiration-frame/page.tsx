@@ -5,7 +5,7 @@ const frameMetadata = getFrameMetadata({
   buttons: [
     {
       label: 'Check expiration',
-      action: 'post_redirect',
+      action: 'post',
     },
     {
       label: 'success',
