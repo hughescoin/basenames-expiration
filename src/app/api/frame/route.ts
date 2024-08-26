@@ -27,21 +27,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     console.error(e);
   }
 
-  /**
-   * Use this code to redirect to a different page
-   */
-  if (message?.button === 3) {
-    return NextResponse.redirect(
-      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-      { status: 302 }
-    );
-  }
+  //   /**
+  //    * Use this code to redirect to a different page
+  //    */
+  //   if (message?.button === 3) {
+  //     return NextResponse.redirect(
+  //       'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+  //       { status: 302 }
+  //     );
+  //   }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: 'Check expiration',
+          label: 'Check another name expiration',
           action: 'post',
         },
         {
