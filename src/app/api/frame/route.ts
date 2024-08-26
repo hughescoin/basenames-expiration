@@ -30,7 +30,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: 'Check another name expiration',
+          label: 'Check another name',
           action: 'post',
         },
         {
@@ -40,7 +40,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/api/og?tokenId${text}`,
+        src: `${NEXT_PUBLIC_URL}/api/og?tokenId=${text}`,
         aspectRatio: '1:1',
       },
       input: {
