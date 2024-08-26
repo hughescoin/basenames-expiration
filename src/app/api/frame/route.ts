@@ -5,7 +5,10 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../../config';
-//const ogUrl = `https://ogcdn.net/e4b8c678-7bd5-445d-ba03-bfaad510c686/v4/${site_text}/${title_text}/${image_url}/og.png`;
+
+const image_url = 'https://basenames-expiration.vercel.app/basename-logo.png';
+const title_text = 'Hello Title Text';
+const site_text = 'basenames.vercel site';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, {
@@ -15,7 +18,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   if (!isValid) {
     return new NextResponse('Message not valid', { status: 500 });
   }
-  console.log(body);
 
   const text = message.input || '';
   let state = {
@@ -27,16 +29,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     console.error(e);
   }
 
-  //   /**
-  //    * Use this code to redirect to a different page
-  //    */
-  //   if (message?.button === 3) {
-  //     return NextResponse.redirect(
-  //       'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-  //       { status: 302 }
-  //     );
-  //   }
-
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
@@ -45,13 +37,17 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           action: 'post',
         },
         {
-          label: 'success',
+          label: `success: ${text}`,
           action: 'link',
           target: 'https://basenames-expiration.vercel.app/',
         },
       ],
+      //   image: {
+      //     src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
+      //     aspectRatio: '1:1',
+      //   },
       image: {
-        src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
+        src: `https://ogcdn.net/e4b8c678-7bd5-445d-ba03-bfaad510c686/v4/${site_text}/${title_text}/${image_url}/og.png`,
         aspectRatio: '1:1',
       },
       input: {
