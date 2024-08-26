@@ -36,13 +36,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           label: `success: ${text}`,
           action: 'link',
-          target: `https://basenames-expiration.vercel.app/api/og?tokenId=${text}`,
+          target: `https://basenames-expiration.vercel.app/api`,
         },
       ],
-      //   image: {
-      //     src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
-      //     aspectRatio: '1:1',
-      //   },
       image: {
         src: `${NEXT_PUBLIC_URL}/api/og?tokenId${text}`,
         aspectRatio: '1:1',
