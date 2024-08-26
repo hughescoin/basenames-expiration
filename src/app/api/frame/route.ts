@@ -5,6 +5,7 @@ import {
 } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../../config';
+import { generateWarpcastURL } from 'src/utils';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
@@ -34,9 +35,12 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           action: 'post',
         },
         {
-          label: `success: ${text}`,
+          label: `Share`,
           action: 'link',
-          target: `https://basenames-expiration.vercel.app/api`,
+          target: generateWarpcastURL(
+            'When does your Basename expire?',
+            `${NEXT_PUBLIC_URL}/expiration-frame`
+          ),
         },
       ],
       image: {
