@@ -6,9 +6,6 @@ import {
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../../config';
 
-const image_url = 'https://basenames-expiration.vercel.app/basename-logo.png';
-const title_text = 'Hello Title Text';
-const site_text = 'basenames.vercel site';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body, {
@@ -47,7 +44,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       //     aspectRatio: '1:1',
       //   },
       image: {
-        src: `https://ogcdn.net/e4b8c678-7bd5-445d-ba03-bfaad510c686/v4/${site_text}/${title_text}/${image_url}/og.png`,
+        src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
         aspectRatio: '1:1',
       },
       input: {
