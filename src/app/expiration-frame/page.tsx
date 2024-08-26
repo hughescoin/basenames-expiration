@@ -7,6 +7,11 @@ const frameMetadata = getFrameMetadata({
       label: 'Check expiration',
       action: 'post_redirect',
     },
+    {
+      label: 'success',
+      action: 'link',
+      target: 'https://basenames-expiration.vercel.app/',
+    },
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/basename-logo.png`,
