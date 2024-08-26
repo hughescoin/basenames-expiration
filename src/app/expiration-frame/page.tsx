@@ -4,15 +4,7 @@ import { NEXT_PUBLIC_URL } from '../../config';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time!',
-    },
-    {
-      action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
-    },
-    {
-      label: 'Redirect to pictures',
+      label: 'Check expiration',
       action: 'post_redirect',
     },
   ],
@@ -21,13 +13,13 @@ const frameMetadata = getFrameMetadata({
     aspectRatio: '1:1',
   },
   input: {
-    text: 'Tell me a boat story',
+    text: 'Basename or TokenId',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/basename-expiration`,
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
-  title: 'Basename Expiration Tracker',
+  title: 'Basename Expiration Checker',
   description: 'LFG',
   openGraph: {
     title: 'by Hughescoin',
@@ -42,7 +34,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>zizzamia.xyz</h1>
+      <h1>Basename Expiration Checker</h1>
     </>
   );
 }
