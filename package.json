@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.29.5",
+    "@vercel/og": "^0.6.2",
     "next": "^14.2.5",
     "permissionless": "^0.1.26",
     "react": "^18",
