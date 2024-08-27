@@ -48,7 +48,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         aspectRatio: '1:1',
       },
       input: {
-        text: 'Basename or TokenId',
+        text: 'Enter a Basename TokenId',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
       state: {

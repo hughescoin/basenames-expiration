@@ -14,7 +14,7 @@ const frameMetadata = getFrameMetadata({
     aspectRatio: '1:1',
   },
   input: {
-    text: 'TokenId',
+    text: 'Enter a Basename TokenId',
   },
   postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
