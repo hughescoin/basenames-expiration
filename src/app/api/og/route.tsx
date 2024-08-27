@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { getNameExpiration } from '../../../lib/basenames';
 import { NextRequest } from 'next/server';
+import CompressedFrameBg from '../../../svg/CompressedFrameBg';
 
 function isValidTokenId(tokenId: string): boolean {
   return /^\d+$/.test(tokenId);
@@ -12,20 +13,17 @@ function generateErrorImage(tokenId: string) {
       <div
         style={{
           fontSize: 40,
-          color: 'black',
-          background: 'white',
+          color: 'white',
+          background: '#0052ff',
           width: '100%',
           height: '100%',
-          padding: '50px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <h1 style={{ fontSize: 60, marginBottom: 20, color: '#3b82f6' }}>
-          Basename Expiration
-        </h1>
+        <h1 style={{ fontSize: 60, marginBottom: 20 }}>Basename Expiration</h1>
         <p style={{ fontSize: 30, marginBottom: 10 }}>
           Token ID: {tokenId} is invalid 😢
         </p>
@@ -62,31 +60,59 @@ export async function GET(req: NextRequest) {
       (
         <div
           style={{
-            fontSize: 40,
-            color: 'black',
-            background: 'white',
-            width: '100%',
-            height: '100%',
-            padding: '50px',
+            width: '1200px',
+            height: '630px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            background: '#0052ff',
+            position: 'relative',
           }}
         >
-          <h1 style={{ fontSize: 60, marginBottom: 20, color: '#3b82f6' }}>
-            Basename Expiration
-          </h1>
-          <p style={{ fontSize: 30, marginBottom: 10 }}>
-            Token ID:{' '}
-            <span style={{ fontWeight: 'bold' }}>
-              {tokenId.slice(0, 4)}...{tokenId.slice(-4)}
-            </span>
-          </p>
-          <p style={{ fontSize: 30, marginBottom: 10 }}>
-            Expires on:{' '}
-            <span style={{ fontWeight: 'bold' }}>{readableDate}</span>
-          </p>
+          {/* SVG Background */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <CompressedFrameBg />
+          </div>
+
+          {/* Content */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontFamily: 'Arial, sans-serif',
+              textAlign: 'center',
+              zIndex: 1,
+              position: 'relative',
+            }}
+          >
+            <h1 style={{ fontSize: '72px', marginBottom: '20px' }}>
+              Basename Expiration
+            </h1>
+            <p style={{ fontSize: '36px', marginBottom: '10px' }}>
+              Token ID:{' '}
+              <span style={{ fontWeight: 'bold' }}>
+                {tokenId.slice(0, 4)}...{tokenId.slice(-4)}
+              </span>
+            </p>
+            <p style={{ fontSize: '48px', fontWeight: 'bold' }}>
+              Expires on: {readableDate}
+            </p>
+          </div>
         </div>
       ),
       {
