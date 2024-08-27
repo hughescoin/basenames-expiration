@@ -36,12 +36,6 @@ export default function Page() {
   return (
     <>
       <h1>Basename Expiration Checker</h1>
-      <Image
-        src={'/basename-starter-image.png'}
-        alt='basename-image'
-        fill
-        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-      />
     </>
   );
 }
