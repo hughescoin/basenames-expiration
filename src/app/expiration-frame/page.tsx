@@ -1,6 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from '../../config';
+import Image from 'next/image';
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -35,6 +36,12 @@ export default function Page() {
   return (
     <>
       <h1>Basename Expiration Checker</h1>
+      <Image
+        src={'/basename-starter-image.png'}
+        alt='basename-image'
+        fill
+        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+      />
     </>
   );
 }
