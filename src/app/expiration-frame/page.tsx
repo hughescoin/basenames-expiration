@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'by Hughescoin',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/basename-logo.png`],
+    images: [`${NEXT_PUBLIC_URL}/basename-starter-image.png`],
   },
   other: {
     ...frameMetadata,
