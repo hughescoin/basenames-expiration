@@ -10,7 +10,7 @@ const OnchainProviders = dynamic(
   () => import('src/components/OnchainProviders'),
   {
     ssr: false,
-  },
+  }
 );
 
 export const viewport = {
@@ -19,21 +19,25 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Onchain App Template',
-  description: 'Built with OnchainKit',
+  title: 'Basename Expiration Checker',
+  description:
+    'Check when your Basename expires. Built by @Hughescoin using OnchainKit',
   openGraph: {
-    title: 'Onchain App Template',
-    description: 'Built with OnchainKit',
-    images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
+    title: 'Basename Expiration Checker',
+    description:
+      'Check when your Basename expires. Built by @Hughescoin using OnchainKit',
+    images: [`${NEXT_PUBLIC_URL}/basename-logo.png`],
   },
 };
 
 export default function RootLayout({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="flex items-center justify-center">
+    <html lang='en'>
+      <body className='flex items-center justify-center'>
         <OnchainProviders>{children}</OnchainProviders>
       </body>
     </html>
