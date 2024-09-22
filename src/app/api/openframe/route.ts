@@ -39,7 +39,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           action: 'link',
           target: generateWarpcastURL(
             'When does your Basename expire?',
-            `${NEXT_PUBLIC_URL}/expiration-frame`
+            `${NEXT_PUBLIC_URL}/expiration-frame-open`
           ),
         },
       ],
@@ -50,7 +50,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       input: {
         text: 'Enter a Basename TokenId',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
+      postUrl: `${NEXT_PUBLIC_URL}/api/openframe`,
       state: {
         page: state?.page + 1,
         time: new Date().toISOString(),
