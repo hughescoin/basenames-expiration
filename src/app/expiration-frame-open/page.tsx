@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from '../../config';
 const frameMetadata = getFrameMetadata({
   isOpenFrame: true,
-  accepts: { xmtp: 'vNext' },
+  accepts: [{ xmtp: 'vNext' }, { anonymous: '1.0' }],
   buttons: [
     {
       label: 'Check expiration',
