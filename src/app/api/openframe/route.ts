@@ -14,6 +14,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   });
 
   if (!isValid) {
+    console.log('Message not valid', message);
     return new NextResponse('Message not valid', { status: 500 });
   }
 
