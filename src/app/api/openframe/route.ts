@@ -29,6 +29,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           label: 'Check another name',
           action: 'post',
+          target: `${NEXT_PUBLIC_URL}/api/openframe`,
         },
         {
           label: `Share`,
