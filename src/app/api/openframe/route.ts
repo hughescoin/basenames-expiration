@@ -10,24 +10,16 @@ import { generateWarpcastURL } from 'src/utils';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   console.log('body', body);
-  const { isValid, message } = await getFrameMessage(body, {
-    neynarApiKey: 'NEYNAR_ONCHAIN_KIT',
-  });
 
-  if (!isValid) {
-    console.log('Message not valid', message);
-    return new NextResponse('Message not valid', { status: 500 });
+  const text = body.untrustedData.inputText;
+
+  if (!text) {
+    return new NextResponse('No text', { status: 500 });
   }
 
-  const text = message.input || '';
-  let state = {
+  const state = {
     page: 0,
   };
-  try {
-    state = JSON.parse(decodeURIComponent(message.state?.serialized));
-  } catch (e) {
-    console.error(e);
-  }
 
   return new NextResponse(
     getFrameHtmlResponse({
