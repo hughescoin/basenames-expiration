@@ -29,6 +29,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   return new NextResponse(
     getFrameHtmlResponse({
+      isOpenFrame: true,
+      accepts: { xmtp: 'vNext', anonymous: '1' },
       buttons: [
         {
           label: 'Check another name',
