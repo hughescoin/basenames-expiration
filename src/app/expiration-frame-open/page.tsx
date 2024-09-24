@@ -8,6 +8,7 @@ const frameMetadata = getFrameMetadata({
     {
       label: 'Check expiration',
       action: 'post',
+      target: `${NEXT_PUBLIC_URL}/api/openframe`,
     },
   ],
   image: {
