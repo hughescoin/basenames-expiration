@@ -9,6 +9,7 @@ import { generateWarpcastURL } from 'src/utils';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
+  console.log('body', body);
   const { isValid, message } = await getFrameMessage(body, {
     neynarApiKey: 'NEYNAR_ONCHAIN_KIT',
   });
