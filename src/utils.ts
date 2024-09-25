@@ -1,3 +1,5 @@
+import { keccak256, toHex, toBytes } from 'viem';
+
 export const BASENAMES_CONTRACT_ADDRESS =
   '0x03c4738Ee98aE44591e1A4A4F3CaB6641d95DD9a';
 
@@ -31,4 +33,12 @@ export function generateWarpcastURL(
   const url = `https://warpcast.com/~/compose?text=${encodedText}&embeds%5B%5D=${encodedEmbedURL}`;
 
   return url;
+}
+
+export function generateTokenIdFromName(name: string): string {
+  const hash = keccak256(toHex(name));
+  const bytes = toBytes(hash);
+  const tokenId = BigInt(bytes.toString());
+  console.log(tokenId);
+  return tokenId.toString();
 }
