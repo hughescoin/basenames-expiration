@@ -18,7 +18,6 @@ const frameMetadata = getFrameMetadata({
   input: {
     text: 'Enter a Basename TokenId',
   },
-  postUrl: `${NEXT_PUBLIC_URL}/api/openframe`,
 });
 
 export const metadata: Metadata = {
