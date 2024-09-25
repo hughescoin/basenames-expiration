@@ -1,14 +1,12 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { NEXT_PUBLIC_URL } from '../../config';
+
 const frameMetadata = getFrameMetadata({
-  isOpenFrame: true,
-  accepts: { anonymous: '1' },
   buttons: [
     {
       label: 'Check expiration',
       action: 'post',
-      target: `${NEXT_PUBLIC_URL}/api/openframe`,
     },
   ],
   image: {
@@ -18,14 +16,15 @@ const frameMetadata = getFrameMetadata({
   input: {
     text: 'Enter a Basename TokenId',
   },
+  postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
   title: 'Basename Expiration Checker',
-  description: 'Check the expiration of a Basename',
+  description: 'LFG',
   openGraph: {
     title: 'by Hughescoin',
-    description: 'Check the expiration of a Basename',
+    description: 'LFG',
     images: [`${NEXT_PUBLIC_URL}/basename-starter-image.png`],
   },
   other: {
