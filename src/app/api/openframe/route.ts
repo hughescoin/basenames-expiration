@@ -1,16 +1,22 @@
 import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL } from '../../../config';
-import { generateWarpcastURL } from 'src/utils';
+import { generateWarpcastURL, generateTokenIdFromName } from '../../../utils';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   console.log('body', body);
 
-  const text = body.untrustedData.inputText;
+  let text = body.untrustedData.inputText;
 
   if (!text) {
     return new NextResponse('No text', { status: 500 });
+  }
+
+  if (text.endsWith('.base.eth')) {
+    const baseName = text.slice(0, -9);
+    text = generateTokenIdFromName(baseName);
+    console.log('corresponding tokenId: ', text);
   }
 
   const state = {
@@ -41,7 +47,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         aspectRatio: '1:1',
       },
       input: {
-        text: 'Enter a Basename TokenId',
+        text: 'Enter a Basename or Basename TokenId',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/openframe`,
       state: {
