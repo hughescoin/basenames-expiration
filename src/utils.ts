@@ -36,9 +36,13 @@ export function generateWarpcastURL(
 }
 
 export function generateTokenIdFromName(name: string): string {
-  const hash = keccak256(toHex(name));
-  const bytes = toBytes(hash);
-  const tokenId = BigInt(bytes.toString());
-  console.log(tokenId);
-  return tokenId.toString();
+  try {
+    const hash = keccak256(toHex(name));
+    const tokenId = BigInt(`0x${hash.slice(2)}`);
+    console.log(tokenId);
+    return tokenId.toString();
+  } catch (error) {
+    console.error('Error generating token ID:', error);
+    return '0'; // Return a default value or handle the error as needed
+  }
 }
