@@ -6,8 +6,8 @@ import { generateWarpcastURL, generateTokenIdFromName } from '../../../utils';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   console.log('body', body);
-
   let text = body.untrustedData.inputText;
+  console.log('text: ', text);
 
   if (!text) {
     console.log('No text provided');
