@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>Basename Expiration Checker</h1>
+      <h1>Basename Expiration Checker Test</h1>
     </>
   );
 }
