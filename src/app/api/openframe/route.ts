@@ -9,9 +9,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   let text = body.untrustedData.inputText;
 
-  // if (!text) {
-  //   return new NextResponse('No text', { status: 500 });
-  // }
+  if (!text) {
+    console.log('No text provided');
+    return new NextResponse('No text', { status: 500 });
+  }
 
   if (text.endsWith('.base.eth')) {
     const baseName = text.slice(0, -9);
@@ -26,7 +27,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   return new NextResponse(
     getFrameHtmlResponse({
       isOpenFrame: true,
-      accepts: { xmtp: 'vNext', anonymous: '1' },
+      accepts: { anonymous: '1' },
       buttons: [
         {
           label: 'Check another name',
@@ -47,7 +48,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         aspectRatio: '1:1',
       },
       input: {
-        text: 'Enter a Basename or Basename TokenId',
+        text: 'Type Basename or TokenId',
       },
       state: {
         page: state?.page + 1,
