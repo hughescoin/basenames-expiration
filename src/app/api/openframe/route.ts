@@ -31,7 +31,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           label: 'Check another name',
           action: 'post',
-          target: `${NEXT_PUBLIC_URL}/api/frame`,
+          target: `${NEXT_PUBLIC_URL}/api/openframe`,
         },
         {
           label: `Share`,
@@ -49,7 +49,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       input: {
         text: 'Enter a Basename or Basename TokenId',
       },
-      postUrl: `${NEXT_PUBLIC_URL}/api/openframe`,
       state: {
         page: state?.page + 1,
         time: new Date().toISOString(),
