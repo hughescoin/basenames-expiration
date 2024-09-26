@@ -14,13 +14,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     return new NextResponse('No text', { status: 500 });
   }
 
+  let tokenId: string;
+
   if (text.endsWith('.base.eth')) {
     const baseName = text.slice(0, -9);
     console.log('basename: ', baseName);
-    let generatedToken = generateTokenIdFromName(baseName);
-    console.log('corresponding tokenId: ', generatedToken);
-    // text = generatedToken;
+    tokenId = generateTokenIdFromName(baseName);
+  } else if (/^\d+$/.test(text)) {
+    // If the input is already a numeric tokenId, use it as is
+    tokenId = text;
+  } else {
+    // Assume the input is a basename without .base.eth
+    tokenId = generateTokenIdFromName(text);
   }
+
+  console.log('corresponding tokenId: ', tokenId);
 
   const state = {
     page: 0,
@@ -49,7 +57,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/api/og?tokenId=${text}`,
+        src: `${NEXT_PUBLIC_URL}/api/og?tokenId=${tokenId}`,
         aspectRatio: '1:1',
       },
       state: {
