@@ -27,6 +27,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   return new NextResponse(
     getFrameHtmlResponse({
       isOpenFrame: true,
+      input: {
+        text: 'Type Basename or TokenId',
+      },
       accepts: { anonymous: '1' },
       buttons: [
         {
@@ -46,9 +49,6 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
       image: {
         src: `${NEXT_PUBLIC_URL}/api/og?tokenId=${text}`,
         aspectRatio: '1:1',
-      },
-      input: {
-        text: 'Type Basename or TokenId',
       },
       state: {
         page: state?.page + 1,
