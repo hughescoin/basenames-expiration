@@ -9,9 +9,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   let text = body.untrustedData.inputText;
 
-  if (!text) {
-    return new NextResponse('No text', { status: 500 });
-  }
+  // if (!text) {
+  //   return new NextResponse('No text', { status: 500 });
+  // }
 
   if (text.endsWith('.base.eth')) {
     const baseName = text.slice(0, -9);
