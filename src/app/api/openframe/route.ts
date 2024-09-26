@@ -16,8 +16,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   if (text.endsWith('.base.eth')) {
     const baseName = text.slice(0, -9);
-    text = generateTokenIdFromName(baseName);
-    console.log('corresponding tokenId: ', text);
+    console.log('basename: ', baseName);
+    let generatedToken = generateTokenIdFromName(baseName);
+    console.log('corresponding tokenId: ', generatedToken);
+    // text = generatedToken;
   }
 
   const state = {
